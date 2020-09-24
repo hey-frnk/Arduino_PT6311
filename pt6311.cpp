@@ -80,10 +80,10 @@ void vfdco_pt6311_set_data(uint8_t digit_pos, uint32_t data) {
     | (uint8_t)VFDCO_PT6311_RW_MODE_WRITE_DISPLAY
   );
   digitalWrite(VFDCO_PT6311_SS_PIN_ARDUINO, LOW);
-  SPI.transfer(VFDCO_PT6311_COMMAND_3 | (digit_pos * 0x03));
-  SPI.transfer(byte(data      ));
-  SPI.transfer(byte(data >>  8));
-  SPI.transfer(byte(data >> 16));
+  SPI.transfer((uint8_t)VFDCO_PT6311_COMMAND_3 | (digit_pos * 0x03));
+  SPI.transfer((uint8_t)(data      ));
+  SPI.transfer((uint8_t)(data >>  8));
+  SPI.transfer((uint8_t)(data >> 16));
   digitalWrite(VFDCO_PT6311_SS_PIN_ARDUINO, HIGH);
 }
 
